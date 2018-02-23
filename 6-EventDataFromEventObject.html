@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Hello World</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <button v-on:click="increaseCount">Click me</button>
+    <p>{{ counter }}</p>
+    <p v-on:mousemove = "updateCoordinates">Coordinates : {{x}} / {{y}}</p>
+  </div>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        counter : 0,
+        x : 0,
+        y : 0
+      },
+      methods: {
+        increaseCount : function(){
+          this.counter++;
+        },
+        updateCoordinates : function(event) {
+          this.x = event.clientX;  //clientX and clientY are default property names of event object
+          this.y = event.clientY;
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
