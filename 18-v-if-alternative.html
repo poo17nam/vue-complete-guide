@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Vue.js Tutorial</title>
+  <script src="./vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p v-if="show">Do you see me? <span>Hello!</span> </p>
+    <p v-else>Now do you see me?</p>
+    <template v-if="show">
+      <h1>Heading</h1>
+      <p>Inside a template</p>
+    </template>
+    <p>Do you also see me?</p>
+    <button @click="show=!show">Switch</button>
+  </div>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        show : true
+      }
+    })
+  </script>
+</body>
+
+</html>

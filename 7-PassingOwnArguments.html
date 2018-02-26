@@ -9,9 +9,9 @@
 
 <body>
   <div id="app">
-    <button v-on:click="increaseCount">Click me</button>
+    <button v-on:click="increaseCount($event,4)">Counter</button>
     <p>{{ counter }}</p>
-    <p v-on:mousemove = "updateCoordinates">Coordinates : {{x}} / {{y}}</p>
+    <p v-on:mousemove="getCoordinates($event)">Coordinates : {{x}} / {{y}}</p>
   </div>
 
   <script>
@@ -23,11 +23,11 @@
         y : 0
       },
       methods: {
-        increaseCount : function(){
-          this.counter++;
+        increaseCount: function($event,step) {
+          this.counter += step;
         },
-        updateCoordinates : function(event) {
-          this.x = event.clientX;  //clientX and clientY are default property names of event object
+        getCoordinates: function(event){
+          this.x = event.clientX;
           this.y = event.clientY;
         }
       }

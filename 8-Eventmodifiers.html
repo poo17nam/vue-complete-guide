@@ -9,19 +9,20 @@
 
 <body>
   <div id="app">
-    <input type="text" v-on:input="changeTitle">
-    <p>{{message}}</p>
+    <p v-on:mousemove="getCoordinates($event)">Coordinates : { {{x}}, {{y}} } - <span v-on:mousemove.stop="">DEAD SPOT</span></p>
   </div>
 
   <script>
     new Vue({
       el: "#app",
       data: {
-        message: "Hello World"
+        x:0,
+        y:0
       },
-      methods: {
-        changeTitle: function(event) {
-          this.message = event.target.value
+      methods:{
+        getCoordinates : function(event){
+          this.x = event.clientX;
+          this.y = event.clientY;
         }
       }
     })

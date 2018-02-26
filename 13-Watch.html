@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Waiting for Changes</title>
+  <script src="./vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <button v-on:click="counter++">Increase Counter</button>
+    <button v-on:click="counter--">Decrease Counter</button>
+    <p>Result : {{counter}}</p>
+  </div>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        counter : 0
+      },
+      watch : {
+        counter : function(value){
+          var vm=this;
+          setTimeout(function(){vm.counter=0},4000)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

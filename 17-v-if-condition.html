@@ -3,21 +3,23 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Hello World</title>
+  <title>Vue.js Tutorial</title>
   <script src="./vue.js"></script>
 </head>
 
 <body>
   <div id="app">
-    {{message}} - <a v-bind:href="link">Google</a>
+    <p v-if="show">Do you see me?</p>
+    <p v-else>Now do you see me?</p>
+    <p>Rendering based on v-if conditional</p>
+    <button @click="show=!show">Switch</button>
   </div>
 
   <script>
     new Vue({
       el: "#app",
       data: {
-        message : "Visit",
-        link : "http://www.google.com"
+        show : true
       }
     })
   </script>

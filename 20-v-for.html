@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Vue.js Tutorial</title>
+  <script src="./vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>Ingredients</h2>
+    <ul>
+      <!-- Add key to keep the values unqiue based on the key -->
+      <li v-for="(ingredient,i) in ingredients" :key="ingredient">{{ingredient}} - ({{i}})</li>
+    </ul>
+    <button @click="ingredients.push('spices')">Add ingredient</button>
+    <hr>
+    <ul>
+      <li v-for="person in persons">
+        <div v-for="(value,key,index) in person">{{key}} - {{value}} ({{index}})</div>
+      </li>
+    </ul>
+
+    <hr>
+    <span v-for="n in 10">{{ n }}</span>
+  </div>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        ingredients : ['carrot','cucumber','beetroot','radish'],
+        persons : [
+          {name : "Poonam", age: 23, color : "red"},
+          {name : "Aarti", age: 22, color : "pink"},
+          {name : "Mamta", age: 17, color : "blue"}
+        ]
+      }
+    })
+  </script>
+</body>
+
+</html>

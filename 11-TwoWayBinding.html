@@ -9,15 +9,15 @@
 
 <body>
   <div id="app">
-    {{message}} - <a v-bind:href="link">Google</a>
+    <input type="text" v-model="name">
+    <p>{{name}}</p>
   </div>
 
   <script>
     new Vue({
       el: "#app",
       data: {
-        message : "Visit",
-        link : "http://www.google.com"
+        name : "Poonam"
       }
     })
   </script>
