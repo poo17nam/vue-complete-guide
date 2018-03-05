@@ -27,12 +27,13 @@ import Header from './components/Header.vue'
           newQuote(quote){
             if(this.quotes.length >= this.maxQuotes) {
               //return alert('Please delete Quotes first!');
-              return swal({
+               swal({
                 icon: 'warning',
                 text: 'Please delete Quotes first!'
               });
-            }
+            }else{
             this.quotes.push(quote);
+          }
           },
           deleteQuote(index) {
             this.quotes.splice(index,1);
