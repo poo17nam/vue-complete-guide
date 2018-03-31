@@ -8,11 +8,12 @@
                   <input class="form-control" type="text" v-model="user.username">
                 </div>
                 <div class="form-group">
-                  <label>Username</label>
+                  <label>Email</label>
                   <input class="form-control" type="text" v-model="user.email">
                 </div>
                 <button class="btn btn-primary" @click="submit">Submit</button>
-                <hr><br><br>
+                <hr><br>
+                  <input class="form-control" type="text" v-model="node"><br>
                 <button class="btn btn-primary" @click="fetchData">Get Data</button>
                 <br><br>
                 <ul class="list-group">
@@ -31,29 +32,54 @@
             username:'',
             email:''
           },
-          users:[]
+          users:[],
+          resource : {},
+          node:'data'
         }
       },
       methods:{
         submit(){
-          console.log("Request:",JSON.stringify(this.user));
-          this.$http.post('https://vuejs-http-c98f5.firebaseio.com/data.json',this.user)
-            .then(response=>{console.log("Response:",response)},error=>{console.log("Error:",error)})
+          //console.log("Request:",JSON.stringify(this.user));
+          //this.$http.post('data.json',this.user)
+          //  .then(response=>{console.log("Response:",response)},error=>{console.log("Error:",error)})
+          //this.resource.save({},this.user);
+          this.resource.saveAlt(this.user);
         },
         fetchData(){
-          this.$http.get('https://vuejs-http-c98f5.firebaseio.com/data.json')
-            .then(response=>{
-              return response.json()
-            })
-            .then(data=>{
-              const resultArray = [];
-              for(let val in data){
-                resultArray.push(data[val])
-              }
+          // this.$http.get('data.json')
+          //   .then(response=>{
+          //     return response.json()
+          //   })
+          //   .then(data=>{
+          //     const resultArray = [];
+          //     for(let val in data){
+          //       resultArray.push(data[val])
+          //     }
+          //
+          //     this.users = resultArray;
+          //   })
 
-              this.users = resultArray;
-            })
+          this.resource.getData({node: this.node})
+            .then(response=>{
+                return response.json()
+              })
+              .then(data=>{
+                const resultArray = [];
+                for(let val in data){
+                  resultArray.push(data[val])
+                }
+
+                this.users = resultArray;
+              })
+
         }
+      },
+      created(){
+        const customActions = {
+          saveAlt : {method: 'POST', url:'alternative.json'},
+          getData : {method: 'GET'}
+        };
+        this.resource = this.$resource('{node}.json',{},customActions);
       }
     }
 </script>
