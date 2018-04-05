@@ -1,3 +1,3 @@
 <template>
-  <p>The Portfolio component</p>
+  <h1>The Portfolio component</h1>
 </template>
