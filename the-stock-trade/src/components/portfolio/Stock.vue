@@ -1,10 +1,6 @@
 <template>
   <div class="col-sm-6 col-md-4">
-<<<<<<< HEAD
     <div class="panel panel-info">
-=======
-    <div class="panel panel-success">
->>>>>>> 9426a266462a0e91241bbd3764c431e85fc26561
       <div class="panel-heading">
         <h3 class="panel-title">
           {{stock.name}}
