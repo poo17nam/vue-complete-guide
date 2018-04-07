@@ -16,6 +16,9 @@
       <a
       class="dropdown-toggle"
       data-toggle="dropdown"
+      role = "button"
+      aria-hashpopup = "true"
+      aria-expanded = "false"
       href="#">Save & Load <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#">Save Data</a></li>
